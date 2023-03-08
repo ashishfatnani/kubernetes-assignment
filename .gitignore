@@ -8,5 +8,5 @@
 *.terraform
 *.tfstate
 *.tfstate.*
-assign2.pem
+assign2.pub
 assign2
