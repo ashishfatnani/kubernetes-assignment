@@ -3,8 +3,6 @@ name: Deploy to the ECR
 on: 
   push:
     branches: [ master ]
-    paths:
-      - web-app/**
 
 jobs:
 
@@ -40,4 +38,8 @@ jobs:
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY_ONE:$IMAGE_TAG .
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY_TWO:$IMAGE_TAG -f Dockerfile_mysql .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY_ONE:$IMAGE_TAG
+<<<<<<< HEAD
         docker push $ECR_REGISTRY/$ECR_REPOSITORY_TWO:$IMAGE_TAG
+=======
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY_TWO:$IMAGE_TAG
+>>>>>>> fbb380bd673da7b9b9fd8861d38a7a0fcc193fde
