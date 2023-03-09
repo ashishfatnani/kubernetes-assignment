@@ -3,9 +3,11 @@ name: Deploy to the ECR
 on: 
   push:
     branches: [ master ]
+    paths:
+      - web-app/**
 
 jobs:
-  
+
   build:
     
     name: Build Image
