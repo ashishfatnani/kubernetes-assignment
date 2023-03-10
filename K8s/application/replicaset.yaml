@@ -1,41 +1,32 @@
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
-  name: my-python-mysql-app
+  name: employees-replicaset
   labels:
-    app: my-python-mysql-app
+    app: employees
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: my-python-mysql-app
+      app: employees
   template:
     metadata:
       labels:
-        app: my-python-mysql-app
+        app: employees
     spec:
       containers:
-      - name: python-app
+      - name: employees-replicaset
         image: 987242725346.dkr.ecr.us-east-1.amazonaws.com/application_ecr_repo:v0.1
-        command: ["python3", "app.py"]
         env:
         - name: DBUSER
           value: root
         - name: DBPWD
-          value: "passwors
+          value: "passwors"
         - name: DBHOST
           value: "mysql.database.svc.cluster.local"
         - name: DATABASE
           value: "employees"
         ports:
-        - containerPort: 5000
-      - name: mysql
-        image: 987242725346.dkr.ecr.us-east-1.amazonaws.com/database_ecr_repo:v0.1
-        env:
-        - name: DBPWD
-          value: "passwors
-        - name: DATABASE
-          value: "employees"
-        ports:
-        - containerPort: 3306
+        - containerPort: 8080
+     
       

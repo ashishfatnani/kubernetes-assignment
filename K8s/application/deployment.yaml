@@ -1,38 +1,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: python-app
+  name: employees-deployment
   labels:
-    app: python-app
+    app: employees
 spec:
   replicas: 3 # number of replicas to create
   selector:
     matchLabels:
-      app: python-app
+      app: employees
   template:
     metadata:
       labels:
-        app: python-app
+        app: employees
     spec:
       containers:
-      - name: python-app
+      - name: employees-deployment
         image: 987242725346.dkr.ecr.us-east-1.amazonaws.com/application_ecr_repo:v0.1
         ports:
-        - containerPort: 5000 # the port your Python app is listening on
+        - containerPort: 8080 # the port Python app is listening on
         env:
         - name: DBHOST
-          value: mysql-service
+          value: "mysql-svc.mysql-namespace.svc.cluster.local"
         - name: DBPORT
           value: "3306"
         - name: DBUSER
-          valueFrom:
-            secretKeyRef:
-              name: mysql-credentials
-              key: username
+          value: "root"
         - name: DB_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: mysql-credentials
-              key: password
-      imagePullSecrets:
-        - name: image-secret-reg
+          value: "passwors"

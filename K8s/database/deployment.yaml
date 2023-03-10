@@ -5,7 +5,7 @@ metadata:
   labels:
     app: mysql-db
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: mysql-db
@@ -18,9 +18,9 @@ spec:
       - name: mysql
         image: 987242725346.dkr.ecr.us-east-1.amazonaws.com/database_ecr_repo:v0.1
         env:
-        - name: MYSQL_ROOT_PASSWORD
-          value: <mysql-root-password>
-        - name: MYSQL_DATABASE
-          value: <mysql-database>
+        - name: DB_PASSWORD
+          value: "passwors"
+        - name: DATABASE
+          value: "employees"
         ports:
         - containerPort: 3306
