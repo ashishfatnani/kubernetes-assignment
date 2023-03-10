@@ -19,23 +19,23 @@ spec:
         image: 987242725346.dkr.ecr.us-east-1.amazonaws.com/application_ecr_repo:v0.1
         command: ["python3", "app.py"]
         env:
-        - name: MYSQL_USER
-          value: <mysql-username>
-        - name: MYSQL_PASSWORD
-          value: <mysql-password>
-        - name: MYSQL_HOST
-          value: <mysql-hostname>
-        - name: MYSQL_DATABASE
-          value: <mysql-database>
+        - name: DBUSER
+          value: root
+        - name: DBPWD
+          value: "passwors
+        - name: DBHOST
+          value: "mysql.database.svc.cluster.local"
+        - name: DATABASE
+          value: "employees"
         ports:
         - containerPort: 5000
       - name: mysql
         image: 987242725346.dkr.ecr.us-east-1.amazonaws.com/database_ecr_repo:v0.1
         env:
-        - name: MYSQL_ROOT_PASSWORD
-          value: <mysql-root-password>
-        - name: MYSQL_DATABASE
-          value: <mysql-database>
+        - name: DBPWD
+          value: "passwors
+        - name: DATABASE
+          value: "employees"
         ports:
         - containerPort: 3306
       

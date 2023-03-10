@@ -16,15 +16,15 @@ spec:
     spec:
       containers:
       - name: python-app
-        image: 987242725346.dkr.ecr.us-east-1.amazonaws.com/application_ecr_repo:v0.1 # replace with your Docker image
+        image: 987242725346.dkr.ecr.us-east-1.amazonaws.com/application_ecr_repo:v0.1
         ports:
-        - containerPort: 5000 # the port your Flask app is listening on
+        - containerPort: 5000 # the port your Python app is listening on
         env:
-        - name: DB_HOST
+        - name: DBHOST
           value: mysql-service
-        - name: DB_PORT
+        - name: DBPORT
           value: "3306"
-        - name: DB_USER
+        - name: DBUSER
           valueFrom:
             secretKeyRef:
               name: mysql-credentials
