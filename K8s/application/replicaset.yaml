@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: my-python-mysql-app
+  labels:
+    app: my-python-mysql-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-python-mysql-app
+  template:
+    metadata:
+      labels:
+        app: my-python-mysql-app
+    spec:
+      containers:
+      - name: python-app
+        image: 987242725346.dkr.ecr.us-east-1.amazonaws.com/application_ecr_repo:v0.1
+        command: ["python3", "app.py"]
+        env:
+        - name: MYSQL_USER
+          value: <mysql-username>
+        - name: MYSQL_PASSWORD
+          value: <mysql-password>
+        - name: MYSQL_HOST
+          value: <mysql-hostname>
+        - name: MYSQL_DATABASE
+          value: <mysql-database>
+        ports:
+        - containerPort: 5000
+      - name: mysql
+        image: 987242725346.dkr.ecr.us-east-1.amazonaws.com/database_ecr_repo:v0.1
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: <mysql-root-password>
+        - name: MYSQL_DATABASE
+          value: <mysql-database>
+        ports:
+        - containerPort: 3306
+      

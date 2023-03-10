@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: python-mysql-app
+spec:
+  containers:
+  - name: python-app
+    image: python:3.9
+    command: ["python3", "app.py"]
+    env:
+    - name: MYSQL_USER
+      value: <mysql-username>
+    - name: MYSQL_PASSWORD
+      value: <mysql-password>
+    - name: MYSQL_HOST
+      value: <mysql-hostname>
+    - name: MYSQL_DATABASE
+      value: <mysql-database>
+    ports:
+    - containerPort: 5000
+    volumeMounts:
+    - name: app-volume
+      mountPath: /app
+  - name: mysql
+    image: mysql:latest
+    env:
+    - name: MYSQL_ROOT_PASSWORD
+      value: <mysql-root-password>
+    - name: MYSQL_DATABASE
+      value: <mysql-database>
+    ports:
+    - containerPort: 3306
+    volumeMounts:
+    - name: mysql-volume
+      mountPath: /var/lib/mysql
+  volumes:
+  - name: app-volume
+    configMap:
+      name: app-config
+  - name: mysql-volume
+    emptyDir: {}
