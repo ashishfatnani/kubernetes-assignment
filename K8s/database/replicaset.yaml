@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
-  name: mysql-db-rs
+  name: mysql-rs
   labels:
-    app: mysql-db
+    app: mysql
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: mysql-db
+      app: mysql
   template:
     metadata:
       labels:
-        app: mysql-db
+        app: mysql
     spec:
       containers:
       - name: mysql
