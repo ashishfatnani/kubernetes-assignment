@@ -18,9 +18,7 @@ spec:
       - name: mysql-deployment
         image: 987242725346.dkr.ecr.us-east-1.amazonaws.com/database_ecr_repo:v0.1
         env:
-        - name: DBPWD
+        - name: MYSQL_ROOT_PASSWORD
           value: "passwors"
-        - name: DATABASE
-          value: "employees"
         ports:
         - containerPort: 3306

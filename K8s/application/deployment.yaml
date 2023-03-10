@@ -26,5 +26,5 @@ spec:
           value: "3306"
         - name: DBUSER
           value: "root"
-        - name: DB_PASSWORD
+        - name: DBPWD
           value: "passwors"

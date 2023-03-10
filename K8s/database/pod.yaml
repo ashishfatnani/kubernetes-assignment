@@ -7,12 +7,10 @@ metadata:
 spec:
   containers:
   - name: mysql
-    image: mysql:latest
+    image: 987242725346.dkr.ecr.us-east-1.amazonaws.com/database_ecr_repo:v0.1
     env:
-    - name: DB_PASSWORD
+    - name: MYSQL_ROOT_PASSWORD
       value: "passwors"
-    - name: DATABASE
-      value: "employees"
     ports:
     - containerPort: 3306
 
