@@ -34,7 +34,7 @@ jobs:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY_ONE: application_ecr_repo
         ECR_REPOSITORY_TWO: database_ecr_repo
-        IMAGE_TAG: v0.1
+        IMAGE_TAG: v0.2
         WORKING_DIR: web-app/
       run: |
         # Docker builD
