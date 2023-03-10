@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: employees-pod
+  labels:
+    app: employees
+spec:
+  containers:
+ 
+  - name: employees
+    image: 987242725346.dkr.ecr.us-east-1.amazonaws.com/application_ecr_repo:v0.1
+    env:
+    - name: DBUSER
+      value: "root"
+    - name: DBPWD
+      value: "passwors"
+    - name: DBHOST
+      value: "mysql-svc.mysql-namespace.svc.cluster.local"
+    - name: DATABASE
+      value: "employees"
+    ports:
+    - containerPort: 8080
+   
